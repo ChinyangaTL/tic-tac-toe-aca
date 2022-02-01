@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { ReactComponent as X } from './images/icons/icon-x.svg';
+import { ReactComponent as XBlack } from './images/icons/icon-x-black.svg';
+import { ReactComponent as XOutline } from './images/icons/icon-x-outline.svg';
+import { ReactComponent as O } from './images/icons/icon-o.svg';
+import { ReactComponent as OBlack } from './images/icons/icon-o-black.svg';
+import { ReactComponent as OOutline } from './images/icons/icon-o-outline.svg';
+import Header from './components/Header';
+import styled from 'styled-components';
+import Board from './components/Board';
 
 function App() {
+  const [currentPlayer, setCurrentPlayer] = useState('x');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper className="App">
+      <Header currentPlayer={currentPlayer} />
+      <Board currentPlayer={currentPlayer} changePlayer={setCurrentPlayer} />
+    </AppWrapper>
   );
 }
+
+const AppWrapper = styled.main`
+  width: 500px;
+  margin: 0 auto;
+`;
 
 export default App;
