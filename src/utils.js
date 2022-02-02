@@ -1,5 +1,4 @@
 export const checkForWinner = (squares) => {
-  console.log('method accessed');
   const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],

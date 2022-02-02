@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Square from './Square';
 import { checkForWinner } from '../utils.js';
+import Modal from './Modal';
 
 const Board = ({ currentPlayer, changePlayer }) => {
   const [squares, setSquares] = useState(Array(9).fill(''));
+  const [winningPlayer, setWinningPlayer] = useState(null);
 
-  checkForWinner(squares);
+  const winner = checkForWinner(squares);
 
   const handleCellClick = (idx) => {
+    if (winner) {
+      setWinningPlayer(winner);
+      return;
+    }
     const grid = [...squares];
     grid[idx] = currentPlayer;
-    console.log(grid);
     setSquares(grid);
     currentPlayer === 'x' ? changePlayer('o') : changePlayer('x');
+    return;
   };
 
   return (
@@ -26,9 +32,11 @@ const Board = ({ currentPlayer, changePlayer }) => {
             cellAction={handleCellClick}
             currentPlayer={currentPlayer}
             currentCells={squares}
+            hasWinner={winner}
           />
         );
       })}
+      <Modal hasWinner={winner} />
     </BoardWrapper>
   );
 };

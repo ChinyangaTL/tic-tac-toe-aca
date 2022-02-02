@@ -5,7 +5,13 @@ import { ReactComponent as OOutline } from '../images/icons/icon-o-outline.svg';
 import { ReactComponent as X } from '../images/icons/icon-x.svg';
 import { ReactComponent as O } from '../images/icons/icon-o.svg';
 
-const Square = ({ cellIdx, cellAction, currentPlayer, currentCells }) => {
+const Square = ({
+  cellIdx,
+  cellAction,
+  currentPlayer,
+  currentCells,
+  hasWinner,
+}) => {
   const [isSquareClicked, setSquareIsClicked] = useState(false);
 
   let buttonShadow = '';
@@ -19,9 +25,7 @@ const Square = ({ cellIdx, cellAction, currentPlayer, currentCells }) => {
 
   const handleClick = (idx) => {
     // cellAction(idx);
-    console.log(isSquareClicked);
     setSquareIsClicked(true);
-    console.log(isSquareClicked);
     cellAction(idx);
   };
 
@@ -30,7 +34,7 @@ const Square = ({ cellIdx, cellAction, currentPlayer, currentCells }) => {
       style={{ boxShadow: buttonShadow, transform: buttonWidth }}
       type="button"
       onClick={() => handleClick(cellIdx)}
-      disabled={isSquareClicked}
+      disabled={hasWinner || isSquareClicked}
     >
       {currentPlayer === 'x' ? (
         <XOutline className="x-outline" />
