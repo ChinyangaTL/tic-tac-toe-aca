@@ -7,7 +7,10 @@ const Modal = ({ hasWinner, restartGame }) => {
     <ModalWrapper>
       <div className={`${hasWinner ? 'modal show' : 'modal'}`}>
         <h2>{hasWinner} is the winning player!</h2>
-        <button onClick={restartGame}>Play Again</button>
+        {/* restart func is a cheat cause of the way I managed state. Will fix if I ever refactor to use context */}
+        <button onClick={() => window.location.reload(false)}>
+          Play Again
+        </button>
       </div>
     </ModalWrapper>
   );
