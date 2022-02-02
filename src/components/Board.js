@@ -4,7 +4,6 @@ import Square from './Square';
 
 const Board = ({ currentPlayer, changePlayer }) => {
   const [squares, setSquares] = useState(Array(9).fill(''));
-
   const handleCellClick = (value) => {
     currentPlayer === 'x' ? changePlayer('o') : changePlayer('x');
   };
