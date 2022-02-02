@@ -22,6 +22,7 @@ function App() {
 
 const AppWrapper = styled.main`
   width: 500px;
+  height: 100vh;
   margin: 0 auto;
 `;
 
