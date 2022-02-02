@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Modal = ({ hasWinner, restartGame }) => {
-  console.log(hasWinner);
   return (
     <ModalWrapper>
       <div className={`${hasWinner ? 'modal show' : 'modal'}`}>
