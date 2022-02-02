@@ -14,3 +14,7 @@
 - Flexbox
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) 
+
+### Images
+![Base state](./screenshotBase.png)
+![Active state](./screenshotBase.png)
