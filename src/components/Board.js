@@ -4,7 +4,12 @@ import Square from './Square';
 
 const Board = ({ currentPlayer, changePlayer }) => {
   const [squares, setSquares] = useState(Array(9).fill(''));
-  const handleCellClick = (value) => {
+
+  const handleCellClick = (idx) => {
+    const grid = [...squares];
+    grid[idx] = currentPlayer;
+    console.log(grid);
+    setSquares(grid);
     currentPlayer === 'x' ? changePlayer('o') : changePlayer('x');
   };
 
@@ -17,6 +22,7 @@ const Board = ({ currentPlayer, changePlayer }) => {
             cellIdx={index}
             cellAction={handleCellClick}
             currentPlayer={currentPlayer}
+            currentCells={squares}
           />
         );
       })}

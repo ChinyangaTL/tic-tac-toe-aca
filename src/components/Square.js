@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as XOutline } from '../images/icons/icon-x-outline.svg';
 import { ReactComponent as OOutline } from '../images/icons/icon-o-outline.svg';
+import { ReactComponent as X } from '../images/icons/icon-x.svg';
+import { ReactComponent as O } from '../images/icons/icon-o.svg';
 
-const Square = ({ cellIdx, cellAction, currentPlayer }) => {
+const Square = ({ cellIdx, cellAction, currentPlayer, currentCells }) => {
   const [isSquareClicked, setSquareIsClicked] = useState(false);
 
   let buttonShadow = '';
@@ -16,10 +18,11 @@ const Square = ({ cellIdx, cellAction, currentPlayer }) => {
   }
 
   const handleClick = (idx) => {
-    cellAction(idx);
+    // cellAction(idx);
     console.log(isSquareClicked);
     setSquareIsClicked(true);
     console.log(isSquareClicked);
+    cellAction(idx);
   };
 
   return (
@@ -34,6 +37,8 @@ const Square = ({ cellIdx, cellAction, currentPlayer }) => {
       ) : (
         <OOutline className="o-outline" />
       )}
+      {currentCells[cellIdx] === 'x' && <X />}
+      {currentCells[cellIdx] === 'o' && <O />}
     </Button>
   );
 };
@@ -66,7 +71,7 @@ const Button = styled.button`
   :focus {
     .x-outline,
     .o-outline {
-      display: block;
+      display: none;
     }
   }
 

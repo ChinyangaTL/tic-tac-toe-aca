@@ -10,7 +10,7 @@ import Board from './components/Board';
 import Footer from './components/Footer';
 
 function App() {
-  const [currentPlayer, setCurrentPlayer] = useState('o');
+  const [currentPlayer, setCurrentPlayer] = useState('x');
   return (
     <AppWrapper className="App">
       <Header currentPlayer={currentPlayer} />
