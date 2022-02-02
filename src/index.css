@@ -1,6 +1,8 @@
 :root {
   --clr-bcg: #1a2a33;
   --clr-btn-primary: #1f3641;
+  --radius: 10px;
+  --transition: all 0.3s linear;
 }
 
 body {

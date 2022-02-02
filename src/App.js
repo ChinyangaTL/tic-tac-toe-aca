@@ -7,6 +7,7 @@ import { ReactComponent as OBlack } from './images/icons/icon-o-black.svg';
 import Header from './components/Header';
 import styled from 'styled-components';
 import Board from './components/Board';
+import Footer from './components/Footer';
 
 function App() {
   const [currentPlayer, setCurrentPlayer] = useState('o');
@@ -14,6 +15,7 @@ function App() {
     <AppWrapper className="App">
       <Header currentPlayer={currentPlayer} />
       <Board currentPlayer={currentPlayer} changePlayer={setCurrentPlayer} />
+      <Footer currentPlayer={currentPlayer} />
     </AppWrapper>
   );
 }

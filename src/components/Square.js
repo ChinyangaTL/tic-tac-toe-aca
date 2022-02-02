@@ -43,7 +43,7 @@ const Button = styled.button`
   height: 125px;
   background-color: var(--clr-btn-primary);
   margin: 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius);
   border: none;
   display: flex;
   align-items: center;
