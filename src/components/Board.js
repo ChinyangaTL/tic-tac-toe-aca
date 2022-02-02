@@ -12,7 +12,12 @@ const Board = ({ currentPlayer, changePlayer }) => {
     <BoardWrapper>
       {squares.map((square, index) => {
         return (
-          <Square key={index} cellIdx={index} cellAction={handleCellClick} />
+          <Square
+            key={index}
+            cellIdx={index}
+            cellAction={handleCellClick}
+            currentPlayer={currentPlayer}
+          />
         );
       })}
     </BoardWrapper>
