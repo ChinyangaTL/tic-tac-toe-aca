@@ -17,4 +17,4 @@
 
 ### Images
 ![Base state](./screenshotBase.png)
-![Active state](./screenshotBase.png)
+![Active state](./screenshotActive.png)
