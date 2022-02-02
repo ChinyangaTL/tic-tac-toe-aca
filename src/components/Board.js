@@ -22,6 +22,12 @@ const Board = ({ currentPlayer, changePlayer }) => {
     return;
   };
 
+  const restartGame = () => {
+    setSquares(Array(9).fill(''));
+    setWinningPlayer(null);
+    changePlayer('x');
+  };
+
   return (
     <BoardWrapper>
       {squares.map((square, index) => {
@@ -36,7 +42,7 @@ const Board = ({ currentPlayer, changePlayer }) => {
           />
         );
       })}
-      <Modal hasWinner={winner} />
+      <Modal hasWinner={winner} restartGame={restartGame} />
     </BoardWrapper>
   );
 };

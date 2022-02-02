@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as XOutline } from '../images/icons/icon-x-outline.svg';
 import { ReactComponent as OOutline } from '../images/icons/icon-o-outline.svg';
@@ -10,7 +10,7 @@ const Square = ({
   cellAction,
   currentPlayer,
   currentCells,
-  hasWinner,
+  winner,
 }) => {
   const [isSquareClicked, setSquareIsClicked] = useState(false);
 
@@ -24,8 +24,11 @@ const Square = ({
   }
 
   const handleClick = (idx) => {
-    // cellAction(idx);
     setSquareIsClicked(true);
+    if (isSquareClicked) {
+      alert('You cannot click the same square twice');
+      return;
+    }
     cellAction(idx);
   };
 
@@ -34,7 +37,6 @@ const Square = ({
       style={{ boxShadow: buttonShadow, transform: buttonWidth }}
       type="button"
       onClick={() => handleClick(cellIdx)}
-      disabled={hasWinner || isSquareClicked}
     >
       {currentPlayer === 'x' ? (
         <XOutline className="x-outline" />

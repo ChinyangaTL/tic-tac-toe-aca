@@ -11,7 +11,10 @@ const Header = ({ currentPlayer }) => {
         <Logo />
       </div>
 
-      <button className="btn-restart">
+      <button
+        className="btn-restart"
+        onClick={() => window.location.reload(false)}
+      >
         <RestartBtn />
       </button>
     </HeaderWrapper>

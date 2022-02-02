@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Modal = ({ hasWinner }) => {
+const Modal = ({ hasWinner, restartGame }) => {
   console.log(hasWinner);
   return (
     <ModalWrapper>
       <div className={`${hasWinner ? 'modal show' : 'modal'}`}>
         <h2>{hasWinner} is the winning player!</h2>
-        <button>Play Again</button>
+        <button onClick={restartGame}>Play Again</button>
       </div>
     </ModalWrapper>
   );
