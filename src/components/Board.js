@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Square from './Square';
+import { checkForWinner } from '../utils.js';
 
 const Board = ({ currentPlayer, changePlayer }) => {
   const [squares, setSquares] = useState(Array(9).fill(''));
+
+  checkForWinner(squares);
 
   const handleCellClick = (idx) => {
     const grid = [...squares];
