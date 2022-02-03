@@ -7,6 +7,7 @@ import Modal from './Modal';
 const Board = ({ currentPlayer, changePlayer }) => {
   const [squares, setSquares] = useState(Array(9).fill(''));
   const [winningPlayer, setWinningPlayer] = useState(null);
+  console.log(squares);
   const winner = checkForWinner(squares);
 
   const handleCellClick = (idx) => {
