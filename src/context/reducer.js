@@ -1,4 +1,10 @@
-import { CHANGE_PLAYER, SET_SQUARES } from './actions';
+import { checkForWinner } from '../utils';
+import {
+  CHANGE_PLAYER,
+  CHECK_WINNER,
+  SET_SQUARES,
+  SET_WINNER,
+} from './actions';
 
 const reducer = (state, action) => {
   if (action.type === CHANGE_PLAYER) {
@@ -13,6 +19,12 @@ const reducer = (state, action) => {
   if (action.type === SET_SQUARES) {
     const grid = [...action.payload];
     return { ...state, squares: grid };
+  }
+  if (action.type === CHECK_WINNER) {
+    const winningPlayer = checkForWinner(action.payload);
+    // console.log(winningPlayer);
+
+    return { ...state, winningPlayer: winningPlayer };
   }
   //   return state;
   throw new Error('No matching action type');

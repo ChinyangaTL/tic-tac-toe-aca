@@ -6,18 +6,24 @@ import Modal from './Modal';
 import { useAppContext } from '../context/context';
 
 const Board = ({ changePlayer }) => {
-  const { currentPlayer, changeCurrentPlayer, squares, updateSquares } =
-    useAppContext();
+  const {
+    currentPlayer,
+    changeCurrentPlayer,
+    squares,
+    updateSquares,
+    winningPlayer,
+    checkForWinningPlayer,
+  } = useAppContext();
   // const [squares, setSquares] = useState(Array(9).fill(''));
-  const [winningPlayer, setWinningPlayer] = useState(null);
-  console.log(squares);
-  const winner = checkForWinner(squares);
+  // const [winningPlayer, setWinningPlayer] = useState(null);
 
   const handleCellClick = (idx) => {
-    if (winner) {
-      setWinningPlayer(winner);
-      return;
-    }
+    const winner = checkForWinningPlayer(squares);
+    console.log(winner);
+    // if (winner) {
+    //   setWinningPlayer(winner);
+    //   return;
+    // }
     const grid = [...squares];
     checkForWinner(grid);
     grid[idx] = currentPlayer;
@@ -29,7 +35,7 @@ const Board = ({ changePlayer }) => {
 
   const restartGame = () => {
     updateSquares(Array(9).fill(''));
-    setWinningPlayer(null);
+    // setWinningPlayer(null);
     changePlayer('x');
   };
 
@@ -45,11 +51,11 @@ const Board = ({ changePlayer }) => {
             cellAction={handleCellClick}
             currentPlayer={currentPlayer}
             currentCells={squares}
-            hasWinner={winner}
+            // hasWinner={winner}
           />
         );
       })}
-      <Modal hasWinner={winner} restartGame={restartGame} />
+      <Modal restartGame={restartGame} />
     </BoardWrapper>
   );
 };

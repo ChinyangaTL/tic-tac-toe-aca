@@ -1,5 +1,10 @@
 import React, { useContext, useReducer } from 'react';
-import { CHANGE_PLAYER, SET_SQUARES } from './actions';
+import {
+  CHANGE_PLAYER,
+  CHECK_WINNER,
+  SET_SQUARES,
+  SET_WINNER,
+} from './actions';
 import reducer from './reducer';
 
 const initalState = {
@@ -21,9 +26,20 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SET_SQUARES, payload: currentSquares });
   };
 
+  const checkForWinningPlayer = (array) => {
+    dispatch({ type: CHECK_WINNER, payload: array });
+  };
+
+  const setWinningPlayer = () => {};
+
   return (
     <AppContext.Provider
-      value={{ ...state, changeCurrentPlayer, updateSquares }}
+      value={{
+        ...state,
+        changeCurrentPlayer,
+        updateSquares,
+        checkForWinningPlayer,
+      }}
     >
       {children}
     </AppContext.Provider>
