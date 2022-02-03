@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Square from './Square';
 import { checkForWinner } from '../utils.js';
@@ -18,12 +18,17 @@ const Board = ({ changePlayer }) => {
   // const [squares, setSquares] = useState(Array(9).fill(''));
   // const [winningPlayer, setWinningPlayer] = useState(null);
 
+  useEffect(() => {
+    checkForWinningPlayer(squares);
+  }, [squares]);
+
   const handleCellClick = (idx) => {
-    const winner = checkForWinningPlayer(squares);
-    if (winner) {
-      setWinningPlayer(winner);
-      console.log(winningPlayer);
-    }
+    console.log(checkForWinningPlayer(squares));
+    // console.log(winner);
+    // if (winner) {
+    //   setWinningPlayer(winner);
+    //   console.log(winningPlayer);
+    // }
     const grid = [...squares];
     checkForWinner(grid);
     grid[idx] = currentPlayer;

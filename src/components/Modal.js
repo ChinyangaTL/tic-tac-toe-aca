@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useAppContext } from '../context/context';
 
 const Modal = ({ hasWinner, restartGame }) => {
+  const { winningPlayer } = useAppContext();
+  console.log(winningPlayer);
   return (
     <ModalWrapper>
-      <div className={`${hasWinner ? 'modal show' : 'modal'}`}>
-        <h2>{hasWinner} is the winning player!</h2>
+      <div className={`${winningPlayer ? 'modal show' : 'modal'}`}>
+        <h2>{winningPlayer} is the winning player!</h2>
         {/* restart func is a cheat cause of the way I managed state. Will fix if I ever refactor to use context */}
         <button onClick={() => window.location.reload(false)}>
           Play Again

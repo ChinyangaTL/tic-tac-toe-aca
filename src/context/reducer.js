@@ -22,11 +22,12 @@ const reducer = (state, action) => {
   }
   if (action.type === CHECK_WINNER) {
     const winningPlayer = checkForWinner(action.payload);
-    // console.log(winningPlayer);
+    console.log(winningPlayer);
 
     return { ...state, winningPlayer: winningPlayer };
   }
   if (action.type === SET_WINNER) {
+    console.log(action.payload);
     return { ...state, winningPlayer: action.payload };
   }
   //   return state;

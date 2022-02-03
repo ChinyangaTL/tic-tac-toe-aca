@@ -12,7 +12,6 @@ export const checkForWinner = (array) => {
   for (let i = 0; i < winningCombos.length; i++) {
     const [a, b, c] = winningCombos[i];
     if (array[a] && array[a] === array[b] && array[a] === array[c]) {
-      console.log(array[a]);
       return array[a];
     }
   }
