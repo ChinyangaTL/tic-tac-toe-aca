@@ -6,8 +6,9 @@ import Modal from './Modal';
 import { useAppContext } from '../context/context';
 
 const Board = ({ changePlayer }) => {
-  const { currentPlayer, changeCurrentPlayer } = useAppContext();
-  const [squares, setSquares] = useState(Array(9).fill(''));
+  const { currentPlayer, changeCurrentPlayer, squares, updateSquares } =
+    useAppContext();
+  // const [squares, setSquares] = useState(Array(9).fill(''));
   const [winningPlayer, setWinningPlayer] = useState(null);
   console.log(squares);
   const winner = checkForWinner(squares);
@@ -20,14 +21,14 @@ const Board = ({ changePlayer }) => {
     const grid = [...squares];
     checkForWinner(grid);
     grid[idx] = currentPlayer;
-    setSquares(grid);
+    updateSquares(grid);
     changeCurrentPlayer(currentPlayer);
     // currentPlayer === 'x' ? changePlayer('o') : changePlayer('x');
     return;
   };
 
   const restartGame = () => {
-    setSquares(Array(9).fill(''));
+    updateSquares(Array(9).fill(''));
     setWinningPlayer(null);
     changePlayer('x');
   };

@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from 'react';
-import { CHANGE_PLAYER } from './actions';
+import { CHANGE_PLAYER, SET_SQUARES } from './actions';
 import reducer from './reducer';
 
 const initalState = {
@@ -17,8 +17,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CHANGE_PLAYER, payload: currentPlayer });
   };
 
+  const updateSquares = (currentSquares) => {
+    dispatch({ type: SET_SQUARES, payload: currentSquares });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, changeCurrentPlayer }}>
+    <AppContext.Provider
+      value={{ ...state, changeCurrentPlayer, updateSquares }}
+    >
       {children}
     </AppContext.Provider>
   );

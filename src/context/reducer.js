@@ -1,4 +1,4 @@
-import { CHANGE_PLAYER } from './actions';
+import { CHANGE_PLAYER, SET_SQUARES } from './actions';
 
 const reducer = (state, action) => {
   if (action.type === CHANGE_PLAYER) {
@@ -9,6 +9,10 @@ const reducer = (state, action) => {
       : (newCurrentPlayer = 'x');
 
     return { ...state, currentPlayer: newCurrentPlayer };
+  }
+  if (action.type === SET_SQUARES) {
+    const grid = [...action.payload];
+    return { ...state, squares: grid };
   }
   //   return state;
   throw new Error('No matching action type');
