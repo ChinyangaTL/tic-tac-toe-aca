@@ -11,25 +11,24 @@ const Board = ({ changePlayer }) => {
     changeCurrentPlayer,
     squares,
     updateSquares,
-    winningPlayer,
     checkForWinningPlayer,
+    setWinningPlayer,
+    winningPlayer,
   } = useAppContext();
   // const [squares, setSquares] = useState(Array(9).fill(''));
   // const [winningPlayer, setWinningPlayer] = useState(null);
 
   const handleCellClick = (idx) => {
     const winner = checkForWinningPlayer(squares);
-    console.log(winner);
-    // if (winner) {
-    //   setWinningPlayer(winner);
-    //   return;
-    // }
+    if (winner) {
+      setWinningPlayer(winner);
+      console.log(winningPlayer);
+    }
     const grid = [...squares];
     checkForWinner(grid);
     grid[idx] = currentPlayer;
     updateSquares(grid);
     changeCurrentPlayer(currentPlayer);
-    // currentPlayer === 'x' ? changePlayer('o') : changePlayer('x');
     return;
   };
 

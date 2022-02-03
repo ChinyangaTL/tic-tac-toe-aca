@@ -26,6 +26,9 @@ const reducer = (state, action) => {
 
     return { ...state, winningPlayer: winningPlayer };
   }
+  if (action.type === SET_WINNER) {
+    return { ...state, winningPlayer: action.payload };
+  }
   //   return state;
   throw new Error('No matching action type');
 };

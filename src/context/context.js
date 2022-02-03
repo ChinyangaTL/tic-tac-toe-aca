@@ -30,7 +30,9 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CHECK_WINNER, payload: array });
   };
 
-  const setWinningPlayer = () => {};
+  const setWinningPlayer = (player) => {
+    dispatch({ type: SET_WINNER, payload: player });
+  };
 
   return (
     <AppContext.Provider
@@ -39,6 +41,7 @@ const AppProvider = ({ children }) => {
         changeCurrentPlayer,
         updateSquares,
         checkForWinningPlayer,
+        setWinningPlayer,
       }}
     >
       {children}
