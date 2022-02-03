@@ -3,12 +3,16 @@ import styled from 'styled-components';
 import Square from './Square';
 import { checkForWinner } from '../utils.js';
 import Modal from './Modal';
+import { useAppContext } from '../context/context';
 
 const Board = ({ currentPlayer, changePlayer }) => {
+  const data = useAppContext();
   const [squares, setSquares] = useState(Array(9).fill(''));
   const [winningPlayer, setWinningPlayer] = useState(null);
   console.log(squares);
   const winner = checkForWinner(squares);
+
+  console.log(data);
 
   const handleCellClick = (idx) => {
     if (winner) {
