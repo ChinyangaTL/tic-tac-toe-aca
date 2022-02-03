@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as Logo } from '../images/logo.svg';
 import { ReactComponent as RestartBtn } from '../images/icons/icon-restart.svg';
-
+import { useAppContext } from '../context/context';
 import styled from 'styled-components';
 
 const Header = () => {

@@ -2,6 +2,7 @@ import React, { useContext, useReducer, useEffect } from 'react';
 import {
   CHANGE_PLAYER,
   CHECK_WINNER,
+  RESET_GAME,
   SET_SQUARES,
   SET_WINNER,
 } from './actions';
@@ -11,6 +12,7 @@ const initalState = {
   squares: Array(9).fill(''),
   currentPlayer: 'x',
   winningPlayer: null,
+  isGameOver: false,
 };
 
 const AppContext = React.createContext();
@@ -34,6 +36,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SET_WINNER, payload: player });
   };
 
+  const restartGame = () => {
+    dispatch({ type: RESET_GAME });
+  };
+
   useEffect(() => {
     checkForWinningPlayer(state.squares);
   }, [state.squares]);
@@ -46,6 +52,7 @@ const AppProvider = ({ children }) => {
         updateSquares,
         checkForWinningPlayer,
         setWinningPlayer,
+        restartGame,
       }}
     >
       {children}

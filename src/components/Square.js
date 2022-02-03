@@ -5,20 +5,16 @@ import { ReactComponent as OOutline } from '../images/icons/icon-o-outline.svg';
 import { ReactComponent as X } from '../images/icons/icon-x.svg';
 import { ReactComponent as O } from '../images/icons/icon-o.svg';
 
-const Square = ({
-  cellIdx,
-  cellAction,
-  currentPlayer,
-  currentCells,
-  winner,
-}) => {
+const Square = ({ cellIdx, cellAction, currentPlayer, currentCells }) => {
   const [isSquareClicked, setSquareIsClicked] = useState(false);
 
   let buttonShadow = '';
   let buttonWidth = '';
+  let buttonHoverEffect = '';
   if (isSquareClicked) {
     buttonShadow = '0px 2px 2px 0px';
     buttonWidth = 'scale(0.98) translate(0, 5px)';
+    buttonHoverEffect = 'none';
   } else {
     buttonShadow = '0px 14px 10px 0px rgba(0, 0, 0, 0.75)';
   }
@@ -34,7 +30,11 @@ const Square = ({
 
   return (
     <Button
-      style={{ boxShadow: buttonShadow, transform: buttonWidth }}
+      style={{
+        boxShadow: buttonShadow,
+        transform: buttonWidth,
+        pointerEvents: buttonHoverEffect,
+      }}
       type="button"
       onClick={() => handleClick(cellIdx)}
     >
