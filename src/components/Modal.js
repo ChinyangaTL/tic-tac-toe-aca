@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppContext } from '../context/context';
 
-const Modal = ({ hasWinner, restartGame }) => {
+const Modal = ({ restartGame }) => {
   const { winningPlayer } = useAppContext();
-  console.log(winningPlayer);
   return (
     <ModalWrapper>
       <div className={`${winningPlayer ? 'modal show' : 'modal'}`}>

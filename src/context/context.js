@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useReducer, useEffect } from 'react';
 import {
   CHANGE_PLAYER,
   CHECK_WINNER,
@@ -33,6 +33,10 @@ const AppProvider = ({ children }) => {
   const setWinningPlayer = (player) => {
     dispatch({ type: SET_WINNER, payload: player });
   };
+
+  useEffect(() => {
+    checkForWinningPlayer(state.squares);
+  }, [state.squares]);
 
   return (
     <AppContext.Provider

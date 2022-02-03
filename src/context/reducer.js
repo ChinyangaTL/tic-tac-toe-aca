@@ -22,7 +22,6 @@ const reducer = (state, action) => {
   }
   if (action.type === CHECK_WINNER) {
     const winningPlayer = checkForWinner(action.payload);
-    console.log(winningPlayer);
 
     return { ...state, winningPlayer: winningPlayer };
   }
