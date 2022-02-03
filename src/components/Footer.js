@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as XGrey } from '../images/icons/icon-x-grey.svg';
 import { ReactComponent as OGrey } from '../images/icons/icon-o-grey.svg';
+import { useAppContext } from '../context/context';
 
-const Footer = ({ currentPlayer }) => {
+const Footer = () => {
+  const { currentPlayer } = useAppContext();
   return (
     <FooterWrapper>
       <div className="turn-indicator">

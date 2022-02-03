@@ -6,12 +6,11 @@ import Board from './components/Board';
 import Footer from './components/Footer';
 
 function App() {
-  const [currentPlayer, setCurrentPlayer] = useState('x');
   return (
     <AppWrapper className="App">
-      <Header currentPlayer={currentPlayer} />
-      <Board currentPlayer={currentPlayer} changePlayer={setCurrentPlayer} />
-      <Footer currentPlayer={currentPlayer} />
+      <Header />
+      <Board />
+      <Footer />
     </AppWrapper>
   );
 }

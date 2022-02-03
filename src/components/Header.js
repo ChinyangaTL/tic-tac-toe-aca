@@ -4,7 +4,7 @@ import { ReactComponent as RestartBtn } from '../images/icons/icon-restart.svg';
 
 import styled from 'styled-components';
 
-const Header = ({ currentPlayer }) => {
+const Header = () => {
   return (
     <HeaderWrapper>
       <div className="logo">

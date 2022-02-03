@@ -5,14 +5,12 @@ import { checkForWinner } from '../utils.js';
 import Modal from './Modal';
 import { useAppContext } from '../context/context';
 
-const Board = ({ currentPlayer, changePlayer }) => {
-  const data = useAppContext();
+const Board = ({ changePlayer }) => {
+  const { currentPlayer, changeCurrentPlayer } = useAppContext();
   const [squares, setSquares] = useState(Array(9).fill(''));
   const [winningPlayer, setWinningPlayer] = useState(null);
   console.log(squares);
   const winner = checkForWinner(squares);
-
-  console.log(data);
 
   const handleCellClick = (idx) => {
     if (winner) {
@@ -23,7 +21,8 @@ const Board = ({ currentPlayer, changePlayer }) => {
     checkForWinner(grid);
     grid[idx] = currentPlayer;
     setSquares(grid);
-    currentPlayer === 'x' ? changePlayer('o') : changePlayer('x');
+    changeCurrentPlayer(currentPlayer);
+    // currentPlayer === 'x' ? changePlayer('o') : changePlayer('x');
     return;
   };
 
