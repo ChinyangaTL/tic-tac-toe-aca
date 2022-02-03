@@ -22,6 +22,9 @@ const reducer = (state, action) => {
   }
   if (action.type === CHECK_WINNER) {
     const winningPlayer = checkForWinner(action.payload);
+    if (!state.squares.includes('')) {
+      return { ...state, winningPlayer: '-' };
+    }
 
     return { ...state, winningPlayer: winningPlayer };
   }

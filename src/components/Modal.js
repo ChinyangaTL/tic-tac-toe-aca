@@ -4,6 +4,23 @@ import { useAppContext } from '../context/context';
 
 const Modal = ({ restartGame }) => {
   const { winningPlayer } = useAppContext();
+  console.log(winningPlayer);
+
+  // is a draw
+  if (winningPlayer === '-') {
+    return (
+      <ModalWrapper>
+        <div className={`${winningPlayer ? 'modal show' : 'modal'}`}>
+          <h2>The Game Has Ended In A Draw</h2>
+          {/* restart func is a cheat cause of the way I managed state. Will fix if I ever refactor to use context */}
+          <button onClick={() => window.location.reload(false)}>
+            Play Again
+          </button>
+        </div>
+      </ModalWrapper>
+    );
+  }
+
   return (
     <ModalWrapper>
       <div className={`${winningPlayer ? 'modal show' : 'modal'}`}>
