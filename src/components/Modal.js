@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppContext } from '../context/context';
 
-const Modal = ({ restartGame }) => {
+const Modal = () => {
   const { winningPlayer } = useAppContext();
-  console.log(winningPlayer);
 
   // is a draw
   if (winningPlayer === '-') {

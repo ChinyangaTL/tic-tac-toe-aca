@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Square from './Square';
-import { checkForWinner } from '../utils.js';
 import Modal from './Modal';
 import { useAppContext } from '../context/context';
 
-const Board = ({ changePlayer }) => {
+const Board = () => {
   const { currentPlayer, changeCurrentPlayer, squares, updateSquares } =
     useAppContext();
 
@@ -17,13 +16,6 @@ const Board = ({ changePlayer }) => {
     return;
   };
 
-  const restartGame = () => {
-    updateSquares(Array(9).fill(''));
-    changePlayer('x');
-  };
-
-  checkForWinner(squares);
-
   return (
     <BoardWrapper>
       {squares.map((square, index) => {
@@ -34,11 +26,10 @@ const Board = ({ changePlayer }) => {
             cellAction={handleCellClick}
             currentPlayer={currentPlayer}
             currentCells={squares}
-            // hasWinner={winner}
           />
         );
       })}
-      <Modal restartGame={restartGame} />
+      <Modal />
     </BoardWrapper>
   );
 };
