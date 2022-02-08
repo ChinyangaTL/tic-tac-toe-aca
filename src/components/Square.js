@@ -1,39 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as XOutline } from '../images/icons/icon-x-outline.svg';
 import { ReactComponent as OOutline } from '../images/icons/icon-o-outline.svg';
+import { ReactComponent as X } from '../images/icons/icon-x.svg';
+import { ReactComponent as O } from '../images/icons/icon-o.svg';
 
-const Square = ({ cellIdx, cellAction, currentPlayer }) => {
+const Square = ({ cellIdx, cellAction, currentPlayer, currentCells }) => {
   const [isSquareClicked, setSquareIsClicked] = useState(false);
 
   let buttonShadow = '';
   let buttonWidth = '';
+  let buttonHoverEffect = '';
   if (isSquareClicked) {
     buttonShadow = '0px 2px 2px 0px';
     buttonWidth = 'scale(0.98) translate(0, 5px)';
+    buttonHoverEffect = 'none';
   } else {
     buttonShadow = '0px 14px 10px 0px rgba(0, 0, 0, 0.75)';
   }
 
   const handleClick = (idx) => {
-    cellAction(idx);
-    console.log(isSquareClicked);
     setSquareIsClicked(true);
-    console.log(isSquareClicked);
+    if (isSquareClicked) {
+      alert('You cannot click the same square twice');
+      return;
+    }
+    cellAction(idx);
   };
 
   return (
     <Button
-      style={{ boxShadow: buttonShadow, transform: buttonWidth }}
+      style={{
+        boxShadow: buttonShadow,
+        transform: buttonWidth,
+        pointerEvents: buttonHoverEffect,
+      }}
       type="button"
       onClick={() => handleClick(cellIdx)}
-      disabled={isSquareClicked}
     >
       {currentPlayer === 'x' ? (
         <XOutline className="x-outline" />
       ) : (
         <OOutline className="o-outline" />
       )}
+      {currentCells[cellIdx] === 'x' && <X />}
+      {currentCells[cellIdx] === 'o' && <O />}
     </Button>
   );
 };
@@ -66,7 +77,7 @@ const Button = styled.button`
   :focus {
     .x-outline,
     .o-outline {
-      display: block;
+      display: none;
     }
   }
 
